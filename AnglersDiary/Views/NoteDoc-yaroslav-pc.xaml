@@ -1,0 +1,274 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.NoteDoc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AnglersDiary"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Рыбалка" Height="750" Width="800" Loaded="Window_Loaded" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <FlowDocumentScrollViewer>
+            <FlowDocument Name="DocViewer" FontSize="14" FontFamily="Georgia" >
+                <Table CellSpacing="0" Margin="0">
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                    <Table.Columns>
+                        <TableColumn Width="95" />
+                        <TableColumn Width="95" />
+                        <TableColumn Width="360" />
+                        <TableColumn Width="100" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell >
+                                <Paragraph>
+                                    <Run Name="DateTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="TimeTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="LocationTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="LatitudeTxt" />                                                    
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run Name="LongitudeTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                    <Table.Columns>
+                        <TableColumn Width="135" />
+                        <TableColumn Width="90" />
+                        <TableColumn Width="80" />
+                        <TableColumn Width="80" />
+                        <TableColumn Width="80" />
+                        <TableColumn Width="80" />
+                        <TableColumn Width="105" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="TempTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="WaterTempTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="PressureTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="WindTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="CloudTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="MoonTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <BlockUIContainer>
+                                    <Button Name="LocationPhotoBtn" Content="Фото рыбалки" Margin="3" Click="LocationPhotoBtn_Click" />
+                                </BlockUIContainer>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell ColumnSpan="7" >
+                                <Paragraph>
+                                    <Run Name="WeatherNoteTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                    <Table.Columns>
+                        <TableColumn Width="165" />
+                        <TableColumn Width="165" />
+                        <TableColumn Width="165" />
+                        <TableColumn Width="155" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="WaterTranspTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="FlowTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="DepthTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="BottomTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="WaterHeightTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="WasteTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell ColumnSpan="2">
+                                <Paragraph>
+                                    <Run Name="DistanceTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell ColumnSpan="4" >
+                                <Paragraph>
+                                    <Run Name="WaterNoteTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table Name="TackleTable" CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                </Table>
+                <Table CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                    <Table.Columns>
+                        <TableColumn Width="150" />
+                        <TableColumn Width="150" />
+                        <TableColumn Width="350" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="CatchWeightTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="CatchCountTxt" />
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell />
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table Name="TrophyTable" CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                </Table>
+                <Table Name="CatchTable" CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                </Table>
+                <Table CellSpacing="0" Margin="0" >
+                    <Table.Resources>
+                        <Style TargetType="TableCell" >
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter Property="Padding" Value="7" />
+                        </Style>
+                    </Table.Resources>
+                    <Table.Columns>
+                        <TableColumn Width="650" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    <Run Name="NoteTxt" />
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Name="DelBtn" Content="{iconPacks:Modern Delete, Width=24, Height=24}" ToolTip="Удалить" Margin="5" Click="DelBtn_Click" />
+            <Button Name="EditBtn" Content="{iconPacks:Modern Edit, Width=24, Height=24}" ToolTip="Изменить" Margin="5" Click="EditBtn_Click" />
+            <Button Name="SaveBtn" Content="{iconPacks:Modern Save, Width=24, Height=24}" ToolTip="Сохранить в RTF" Margin="5" Click="SaveBtn_Click" />
+            <Button Name="PrintBtn" Content="{iconPacks:Modern Printer, Width=32, Height=32}" ToolTip="Печать" Margin="5" Click="PrintBtn_Click" />
+        </StackPanel>
+    </Grid>
+</Mahapps:MetroWindow>

@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="AnglersDiary.Controls.GalleryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AnglersDiary.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" DataContext="{Binding RelativeSource={RelativeSource Self}}" >
+    <UserControl.Resources>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="MinWidth" Value="50" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ListBox Name="ImgListBox" ItemsSource="{Binding Images}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Multiple" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Thumbnail}" Width="{Binding ElementName=Slider, Path=Value}" 
+                           Height="{Binding ElementName=Slider, Path=Value}" >
+                    </Image>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="5" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" >
+                    <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <DockPanel  Grid.Row="1" >
+            <StackPanel Visibility="{Binding ButtonsVisible}" DockPanel.Dock="Left" Orientation="Horizontal" >
+                <Button Name="AddBtn" Content="+"  Click="AddBtn_Click" />
+                <Button Name="DelBtn" Content="-" Click="DelBtn_Click" />
+            </StackPanel>
+            <Slider Name="Slider" DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Margin="10,0" Value="150" Minimum="100" Maximum="300" MinHeight="30" />
+        </DockPanel>
+    </Grid>
+</UserControl>

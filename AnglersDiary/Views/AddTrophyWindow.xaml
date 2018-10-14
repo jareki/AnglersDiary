@@ -1,0 +1,58 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.AddTrophyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AnglersDiary"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="Добавить сведения о трофее" Height="506.931" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Вид" />
+        <ComboBox Name="SpecyCombo" ItemsSource="{Binding Species}" SelectedItem="{Binding SelectedSpecy}" 
+                  Grid.Column="1" Margin="5" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate >
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Размер в см" Grid.Row="1" />
+        <Mahapps:NumericUpDown Value="{Binding Trophy.Size}" Minimum="1" Maximum="300" 
+                               Grid.Row="1" Grid.Column="1" Margin="5" />
+
+        <TextBlock Text="Вес в граммах" Grid.Row="2" />
+        <Mahapps:NumericUpDown Value="{Binding Trophy.Weight}" Minimum="0" Maximum="50000" 
+                               Grid.Row="2" Grid.Column="1" Margin="5" />
+
+        <TextBlock Text="Фото" Grid.Row="3" />
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1" >
+            <StackPanel Background="LightGray">
+                <Image Name="Img" Width="150" Height="150" Margin="5" />
+            </StackPanel>
+            <Button Content="Обзор" Margin="5" Name="SelectImg" Click="SelectImg_Click" />
+        </StackPanel>
+
+        <TextBlock Text="Примечание" Grid.Row="4" />
+        <TextBox Text="{Binding Trophy.Text}" Margin="5" Grid.Row="4" Grid.Column="1" />
+
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="AcceptBtn" IsDefault="True" Margin="5" Content="OK" Click="AcceptBtn_Click" Command="{Binding SaveCommand}" />
+            <Button Name="CancelBtn" IsCancel="True" Margin="5" Content="Cancel" />
+        </StackPanel>
+    </Grid>
+</Mahapps:MetroWindow>

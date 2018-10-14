@@ -1,0 +1,50 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.AddTackleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AnglersDiary"
+        mc:Ignorable="d"
+        Title="Изменить сведения о снасти" Height="284.257" Width="269.329" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Категория" />
+        <ComboBox Name="CategoryCombo" ItemsSource="{Binding Categories}" 
+                  SelectedItem="{Binding SelectedCategory}" Grid.Column="1" Margin="5" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Название" Grid.Row="1" />
+        <TextBox Text="{Binding Tackle.Name}" Grid.Row="1" Grid.Column="1" Margin="5" />
+
+        <TextBlock Text="Картинка" Grid.Row="2" />
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" >
+            <StackPanel Background="LightGray">
+                <Image Name="Img" Width="100" Height="100" Margin="5" />
+            </StackPanel>
+            <Button Name="SelectImgBtn" Content="Обзор" Margin="5" Click="SelectImgBtn_Click" />
+        </StackPanel>
+        
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="AcceptBtn" IsDefault="True" Margin="5" Content="OK" Click="AcceptBtn_Click"
+                    Command="{Binding SaveCommand}"/>
+            <Button Name="CancelBtn" IsCancel="True" Margin="5" Content="Cancel" />
+        </StackPanel>
+    </Grid>
+</Mahapps:MetroWindow>

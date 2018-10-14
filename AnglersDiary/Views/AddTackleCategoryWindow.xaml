@@ -1,0 +1,29 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.AddTackleCategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AnglersDiary"
+        mc:Ignorable="d"
+        Title="Добавить категорию снасти" Height="105" Width="330">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Название" VerticalAlignment="Center" />
+        <TextBox Text="{Binding Category.Name}" Grid.Column="1" Margin="5" />
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="AcceptBtn" IsDefault="True" Margin="5" Content="OK" Command="{Binding SaveCommand}"
+                    Click="AcceptBtn_Click" />
+            <Button Name="CancelBtn" IsCancel="True" Margin="5" Content="Cancel" />
+        </StackPanel>
+    </Grid>
+</Mahapps:MetroWindow>

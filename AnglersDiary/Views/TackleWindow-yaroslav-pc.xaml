@@ -1,0 +1,61 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.TackleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:AnglersDiary"
+        mc:Ignorable="d"
+        Title="Снасти" Height="700" Width="600" ResizeMode="NoResize">
+    <Window.Resources>       
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Name="CategoryPanel" Orientation="Horizontal" Margin="5" >
+            <ComboBox Name="CategoryCombo" Width="150" ItemsSource="{Binding Categories}" Margin="2"
+                      SelectedItem="{Binding SelectedCategory}" SelectionChanged="CategoryCombo_SelectionChanged" />
+            <Button Name="AddCategoryBtn" Content="{iconPacks:Modern Add, Width=20, Height=20}" 
+                    ToolTip="Добавить категорию" Margin="5" Command="{Binding AddCommand}"/>
+            <Button Name="EditCategoryBtn" Content="{iconPacks:Modern Edit, Width=20, Height=20}" 
+                    ToolTip="Изменить категорию" Margin="5" Command="{Binding EditCommand}" />
+        </StackPanel>
+
+        <ListBox Name="TackleListBox" Grid.Row="1" ItemsSource="{Binding Tackles}" SelectedItem="{Binding SelectedTackle}"
+                 MouseDoubleClick="TackleListBox_MouseDoubleClick">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <Image Width="100" Height="100" Margin="0,5"
+                               Source="{Binding Image, Converter={StaticResource ThumbnailConverter}}" />
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Name="AddTackleBtn" Content="{iconPacks:Modern Add, Width=20, Height=20}" 
+                    ToolTip="Добавить снасть" Margin="5" Command="{Binding AddCommand}" />
+            <Button Name="EditTackleBtn" Content="{iconPacks:Modern Edit, Width=20, Height=20}" 
+                    ToolTip="Изменить снасть" Margin="5" Command="{Binding EditCommand}" />
+        </StackPanel>
+
+        <StackPanel Name="ButtonsPanel" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Name="AcceptBtn" Content="OK" Margin="5" IsDefault="True" Click="AcceptBtn_Click" />
+            <Button Name="CancelBtn" Content="Отмена" Margin="5" IsCancel="True" />
+        </StackPanel>
+
+    </Grid>    
+</Mahapps:MetroWindow>

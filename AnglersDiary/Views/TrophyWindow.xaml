@@ -1,0 +1,85 @@
+﻿<Mahapps:MetroWindow x:Class="AnglersDiary.Views.TrophyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AnglersDiary.Views"
+        mc:Ignorable="d"
+        Title="Трофеи" Height="700" Width="591.5">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Name="SpecyPanel" Orientation="Horizontal" Margin="5" >
+            <ComboBox Name="SpecyCombo" Width="150" ItemsSource="{Binding Species}" SelectionChanged="SpecyCombo_SelectionChanged" />
+            <Button Name="AddSpecyBtn" Content="Добавить вид" Margin="5" Command="{Binding AddCommand}" />
+            <Button Name="EditSpecyBtn" Content="Изменить вид" Margin="5" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=SpecyCombo, Path=SelectedItem}" />
+        </StackPanel>
+
+        <DataGrid Name="TrophyGrid" Grid.Row="1" ItemsSource="{Binding Trophies}"
+                  AutoGenerateColumns="False" GridLinesVisibility="None" IsReadOnly="True" >
+            <DataGrid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ShowImageCommand}"
+                              CommandParameter="{Binding ElementName=TrophyGrid, Path=SelectedItem}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>                
+                <DataGridTemplateColumn Width="150" Header="Фото">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image, Converter={StaticResource ThumbnailConverter}}" Width="140" Height="130" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Вид" Binding="{Binding Specy.Name}" CanUserSort="False" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Длина" Binding="{Binding Size}" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Вес" Binding="{Binding Weight}" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Note.Date, StringFormat={}{0:dd.MM.yyyy}}" CanUserSort="False" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Примечание" Binding="{Binding Text}" CanUserSort="False"
+                                    Width="180">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Увеличить фотографию" Command="{Binding ShowImageCommand}" />
+                    <MenuItem Header="Открыть рыбалку" Command="{Binding ShowNoteCommand}" />
+                </ContextMenu>                
+            </DataGrid.ContextMenu>
+        </DataGrid>
+
+    </Grid>
+</Mahapps:MetroWindow>
